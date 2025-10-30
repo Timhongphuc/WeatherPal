@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var sunrise: String = ""
     @State private var sunset: String = ""
     
-    @State private var ai: [AI_Weather_AppTests] = []
+    //@State private var ai: [AI_Weather_AppTests] = []
     //DESIGN
     @State var wIconDesign: Bool = false
     @State var dayTime: Bool = true
@@ -270,48 +270,48 @@ struct ContentView: View {
 }
 
 
-struct AI_Weather_AppTests { //At some point, AI helped me there, because the Foundation model framework is pretty new to me. (05. Oct. 2025)
-    @State private var temperature: Double = 0
-    @State private var tempMax: Double = 0
-    @State private var tempMin: Double = 0
-    @State private var description: String = ""
-    @State private var pressure: Int = 0
-    @State private var wind: Double = 0
-    @State private var sunrise: String = ""
-    @State private var sunset: String = ""
+//struct AI_Weather_AppTests { //At some point, AI helped me there, because the Foundation model framework is pretty new to me. (05. Oct. 2025)
+  //  @State private var temperature: Double = 0
+    //@State private var tempMax: Double = 0
+   // @State private var tempMin: Double = 0
+   // @State private var description: String = ""
+   // @State private var pressure: Int = 0
+   // @State private var wind: Double = 0
+   // @State private var sunrise: String = ""
+   // @State private var sunset: String = ""
     
-    func loadData() {
-        Task {
-            do {
-                print("Data is on it's way! 🚀 (For AI)")
+   // func loadData() {
+     //   Task {
+       //     do {
+         //       print("Data is on it's way! 🚀 (For AI)")
                 
-                let weatherResponse = try await fetchWeatherData() //Function Call in ContentView
+           //     let weatherResponse = try await fetchWeatherData() //Function Call in ContentView
                 
-                temperature = weatherResponse.main.temp
-                tempMax = weatherResponse.main.tempMax
-                tempMin = weatherResponse.main.tempMin
-                description = weatherResponse.weather[0].description
-                pressure = weatherResponse.main.pressure
-                wind = weatherResponse.wind.speed
+             //   temperature = weatherResponse.main.temp
+             //   tempMax = weatherResponse.main.tempMax
+             //   tempMin = weatherResponse.main.tempMin
+             //   description = weatherResponse.weather[0].description
+             //   pressure = weatherResponse.main.pressure
+             //   wind = weatherResponse.wind.speed
                 //                sunrise = weatherResponse.sys.sunrise
                 //                sunset = weatherResponse.sys.sunset
-            }
-        }
-    }
+           // }
+       // }
+   // }
     
-    func ai() async{
-        if #available(iOS 26.0, *) {
-            do {
-                let session = LanguageModelSession()
-                let result = try await session.respond(to: "You are the Weather Pal of the App user, who is using the weather app. Give the user some tips what he should wear, based on these weather conditions: temperature: \(temperature), max: \(tempMax), min: \(tempMin), description: \(description), pressure: \(pressure), wind: \(wind)")
+    //func ai() async{
+      //  if #available(iOS 26.0, *) {
+        //    do {
+          //      let session = LanguageModelSession()
+            //    let result = try await session.respond(to: "You are the Weather Pal of the App user, who is using the weather app. Give the user some tips what he should wear, based on these weather conditions: temperature: \(temperature), max: \(tempMax), min: \(tempMin), description: \(description), pressure: \(pressure), wind: \(wind)")
                 // Do something with result if needed
-                print(result.content)
-            } catch {
-                print("AI error: \(error)")
-            }
-        } else {
+              //  print(result.content)
+           // } catch {
+             //   print("AI error: \(error)")
+            //}
+        //} else {
             // Fallback on earlier versions
-        }
-    }
-}
+    //    }
+   // }
+//}
 
